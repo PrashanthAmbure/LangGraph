@@ -46,7 +46,7 @@ A fully offline chatbot that supports ChatGPT-style **session naming**, **stream
 flowchart TD
     START((Start))
     UI[Streamlit UI Input] --> S1[Append to LangGraph State]
-    S1 --> N[LangGraph Node: chat_node → LLM.invoke(full messages)]
+    S1 --> N[LangGraph Node: chat_node]
     N --> STREAM[Stream AIMessage chunks to UI]
     STREAM --> CP[Save Checkpoint (InMemorySaver, thread_id)]
     CP --> OUT[Return streamed response to UI]
