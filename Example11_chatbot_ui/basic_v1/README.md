@@ -13,11 +13,20 @@ This project showcases:
 - Fully offline execution (no external APIs)
 
 ---
-
 ## UI Preview
 ![](Demo.jpg)
-
-
+---
+```mermaid
+graph TD;
+	__start__([<p>__start__</p>]):::first
+	chat_node(chat_node)
+	__end__([<p>__end__</p>]):::last
+	__start__ --> chat_node;
+	chat_node --> __end__;
+	classDef default fill:#f2f0ff,line-height:1.2
+	classDef first fill-opacity:0
+	classDef last fill:#bfb6fc
+```
 ---
 
 ## Tech Stack
@@ -40,18 +49,6 @@ This project showcases:
 5. On the next user query, LangGraph restores prior state from the latest checkpoint.
 6. Since the full message list is passed each turn, the bot can recall past details when asked again.
 
----
-
-
-## Flowchart (State + Persistence)
-```mermaid
-flowchart TD
-    A[User Input - Streamlit] --> B[Append to LangGraph State]
-    B --> C[LLM.invoke via chat_node]
-    C --> D[Generate Assistant Response]
-    D --> E[Save State to Checkpoint - thread_id]
-    E --> F[Return Response to Streamlit UI]
-```
 ---
 ## Sequence Flow
 ```mermaid
