@@ -44,6 +44,8 @@ graph TD;
 	classDef last fill:#bfb6fc
 ```
 ---
+## Sequence Flow
+```mermaid
 sequenceDiagram
     participant UI as Streamlit UI
     participant LG as LangGraph
