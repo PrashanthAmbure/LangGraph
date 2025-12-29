@@ -14,10 +14,9 @@ This project showcases:
 
 ---
 
-## Demo Preview
-Download and play the demo video from the `docs/` folder.
+## UI Preview
+![](Demo.jpg)
 
-[demo.mp4](demo.mp4)
 
 ---
 
