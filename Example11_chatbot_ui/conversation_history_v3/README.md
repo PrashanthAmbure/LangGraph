@@ -40,19 +40,6 @@ A fully offline chatbot that supports ChatGPT-style **session naming**, **stream
 6. When a sidebar session is selected, the last checkpoint is restored and replayed to the model so recall works.
 
 ---
-
-## Execution Flow
-```mermaid
-flowchart TD
-    START((Start))
-    UI[Streamlit UI Input] --> S1[Append to LangGraph State]
-    S1 --> N[LangGraph Node: chat_node]
-    N --> STREAM[Stream AIMessage chunks to UI]
-    STREAM --> CP[Save Checkpoint (InMemorySaver, thread_id)]
-    CP --> OUT[Return streamed response to UI]
-    OUT --> END((End))
-```
----
 ## Sequence Diagram
 ```mermaid
 sequenceDiagram
