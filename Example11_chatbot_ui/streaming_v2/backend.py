@@ -4,9 +4,6 @@ from langchain_core.messages import BaseMessage
 from langchain_ollama import ChatOllama
 from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.graph.message import add_messages
-from dotenv import load_dotenv
-
-load_dotenv()
 
 llm = ChatOllama(model='llama3.1')
 
@@ -27,4 +24,3 @@ graph.add_edge(START, "chat_node")
 graph.add_edge("chat_node", END)
 
 chatbot = graph.compile(checkpointer=checkpointer)
-print(chatbot.get_graph().draw_mermaid())
