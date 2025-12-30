@@ -17,7 +17,12 @@ It demonstrates a real-world conversational AI pattern using:
 > This is achieved by LangGraph checkpoints stored on disk using a persistent `thread_id` as the memory key.
 
 ---
+---
+## UI Preview
+![](Tools.gif)
 
+---
+---
 ## Tech Stack
 
 | Layer | Technology |
