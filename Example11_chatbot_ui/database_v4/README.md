@@ -87,23 +87,3 @@ sequenceDiagram
     DB-->>LG: Checkpoint stored on disk
     UI->>DB: Persist generated chat title mapped to thread_id
 ```
-
----
-## Sequence Diagram - SSession Naming Flow (ChatGPT-Style UX)
-```mermaid
-sequenceDiagram
-    participant UI as Streamlit UI
-    participant LG as LangGraph Runtime
-    participant LLM as Ollama Model
-    participant DB as SQLite
-
-    UI->>LG: User message
-    LG->>DB: Restore latest checkpoint (if exists)
-    DB-->>LG: Return saved state snapshot
-    LG->>LLM: Invoke(full message list)
-    LLM-->>LG: Stream AIMessage chunks
-    LG-->>UI: Stream tokens progressively
-    LG->>DB: Save conversation checkpoint using thread_id
-    DB-->>LG: Checkpoint stored on disk
-    UI->>DB: Persist generated chat title mapped to thread_id
-```
