@@ -17,5 +17,5 @@ def delete_thread(thread_id: str):
     conn.commit()
     conn.close()
 
-delete_thread("6d87f343-6357-42a2-8ced-26d193b9eced")
+delete_thread("c2648c89-473a-4865-8bf5-363d0c7620a2")
 

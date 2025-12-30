@@ -11,8 +11,8 @@ import sqlite3
 import requests
 
 
-ALPHA_ADVANTAGE_API_KEY=''
-WEATHER_API_KEY=''
+ALPHA_ADVANTAGE_API_KEY='CKAFA2KIH8XUFLXJ'
+WEATHER_API_KEY='a5ada7a7bd3922a889cb835f972b87bc'
 DB_PATH = "../v4_database/db/mychatbot.db"
 
 # -------------------
