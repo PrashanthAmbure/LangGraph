@@ -66,21 +66,9 @@ In this project:
 ---
 ## UI Preview
 ![](conversational.gif)
----
-
-## Architecture Diagram
-```mermaid
-flowchart LR
-    U((User)) --> UI[Streamlit UI]
-    UI --> LG[LangGraph StateGraph]
-    LG --> N1[chat_node()]
-    N1 --> LLM[Ollama LLM\nllama3.1]
-    LLM --> CP[SQLite Checkpoints\n(SqliteSaver)]
-    CP --> LG
-    LG --> UI
-```
 
 ---
+
 ## Sequence Diagram - Streaming + SQLite Persistence
 ```mermaid
 sequenceDiagram
