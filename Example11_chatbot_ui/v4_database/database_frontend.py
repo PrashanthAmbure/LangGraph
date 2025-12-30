@@ -101,7 +101,7 @@ if user_input:
     thread_name = st.session_state["thread_names"].get(current)
     if not thread_name:
         # chat_title = llm.invoke(f"Create a very short chat title for this message: {user_input}").content
-        chat_title = llm.invoke(f"Return only a short chat title (max 5 words). Do not add any explanation, prefix, or extra text. Message: {user_input}").content
+        chat_title = llm.invoke(f"Return only a short chat title (max 3 words). Do not add any explanation, prefix, or extra text. Message: {user_input}").content
         st.session_state["thread_names"][current] = chat_title
         save_thread_title(current, chat_title)  # Persist to DB checkpoint metadata
 

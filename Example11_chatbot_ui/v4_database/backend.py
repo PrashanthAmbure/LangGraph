@@ -8,6 +8,7 @@ from langgraph.checkpoint.sqlite import SqliteSaver
 
 
 llm = ChatOllama(model = 'llama3.1')
+DB_PATH = 'db/mychatbot.db'
 
 class ChatState(TypedDict):
     messages: Annotated[list[BaseMessage], add_messages]
@@ -28,7 +29,7 @@ def create_table_thread_title(conn):
     conn.commit()
     # conn.close()
 
-connection = sqlite3.connect(database='db/mychatbot.db', check_same_thread=False)
+connection = sqlite3.connect(database=DB_PATH, check_same_thread=False)
 
 create_table_thread_title(connection)
 
@@ -51,7 +52,7 @@ def retrieve_all_threads():
 
 # Now this runs only INSERT/UPDATE, no table creation
 def save_thread_title(thread_id: str, title: str):
-    conn = sqlite3.connect("db/mychatbot.db")
+    conn = sqlite3.connect(DB_PATH)
     conn.execute(
         "INSERT OR REPLACE INTO thread_title (thread_id, title) VALUES (?, ?)",
         (thread_id, title.strip())
@@ -60,7 +61,7 @@ def save_thread_title(thread_id: str, title: str):
     conn.close()
 
 def load_persisted_title(thread_id: str):
-    conn = sqlite3.connect("db/mychatbot.db")
+    conn = sqlite3.connect(DB_PATH)
     row = conn.execute("SELECT title FROM thread_title WHERE thread_id = ?", (thread_id,)).fetchone()
     conn.close()
     return row[0] if row else ""
