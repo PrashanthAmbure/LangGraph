@@ -10,7 +10,7 @@ from typing import TypedDict, Annotated
 import requests
 
 
-ALPHA_ADVANTAGE_API_KEY='CKAFA2KIH8XUFLXJ'
+ALPHA_ADVANTAGE_API_KEY=''
 
 llm = ChatOllama(model='llama3.1')
 
@@ -75,7 +75,7 @@ builder.add_edge('tools', 'chat_node')
 checkpointer=InMemorySaver()
 
 workflow = builder.compile(checkpointer=checkpointer)
-print(workflow.get_graph().draw_ascii())
+print(workflow.get_graph().draw_mermaid())
 
 config = {'configurable': {'thread_id': 'hitl_2'}}
 
