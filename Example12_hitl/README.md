@@ -58,6 +58,27 @@ graph TD;
 
 ---
 
+### CLI Chat Loop Behavior
+- The chatbot runs in an infinite terminal loop using `while True` and waits for user input via `input()`.
+- Each user message is wrapped into a `HumanMessage` object and passed into the LangGraph workflow state.
+- The state graph executes using `workflow.invoke()` with a `thread_id` inside `config`, enabling thread-scoped checkpoint memory.
+
+### Human-In-The-Loop Interrupts
+- Tools such as `purchase_stock()` may call `interrupt()`, which pauses the graph execution.
+- Interrupt signals are returned in `__interrupt__` and detected using `result.get("__interrupt__", [])`.
+- When interrupted, the system prints an approval prompt and waits for a human decision (`y/n`) from the terminal.
+
+### Resuming Execution
+- The graph resumes from the paused tool node using `workflow.invoke(Command(resume=decision))` with the same `thread_id` config.
+- The decision is used only to continue the workflow and is not directly fed into the LLM.
+
+### Assistant Response Rendering
+- After execution (normal or resumed), the final assistant message is always the last `AIMessage` in `state["messages"]`.
+- The bot prints this response to the user using `print(last_msg.content)`.
+
+This architecture ensures structured state merging, thread-scoped memory recall, and controlled execution for sensitive tool actions.
+
+
 ## Sequence Diagram
 ```mermaid
 sequenceDiagram
